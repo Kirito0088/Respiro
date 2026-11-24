@@ -21,6 +21,18 @@ export async function requireUserId(ctx: QueryCtx | MutationCtx | ActionCtx): Pr
   return userId;
 }
 
+export async function requireOwnedProfile(
+  ctx: QueryCtx | MutationCtx,
+  profileId: Id<"profiles">,
+): Promise<{ userId: Id<"users">; profile: Doc<"profiles"> }> {
+  const userId = await requireUserId(ctx);
+  const profile = await ctx.db.get("profiles", profileId);
+  if (!profile || profile.ownerId !== userId) {
+    throw notFound("That household profile");
+  }
+  return { userId, profile };
+}
+
 export async function requireOwned<TableName extends TableNames>(
   ctx: QueryCtx | MutationCtx,
   table: TableName,
