@@ -1,0 +1,26 @@
+"use client";
+
+import { ConvexAuthProvider } from "@convex-dev/auth/react";
+import { ConvexReactClient } from "convex/react";
+import { MotionConfig } from "motion/react";
+import type { ReactNode } from "react";
+import { ConfettiProvider } from "@/components/ui/confetti";
+import { Toaster } from "@/components/ui/sonner";
+import { TooltipProvider } from "@/components/ui/tooltip";
+import { spring } from "@/lib/motion";
+
+const convexUrl = process.env.NEXT_PUBLIC_CONVEX_URL || "http://127.0.0.1:3210";
+const convex = new ConvexReactClient(convexUrl, { unsavedChangesWarning: false });
+
+export function AppProviders({ children }: { children: ReactNode }) {
+  return (
+    <ConvexAuthProvider client={convex}>
+      <MotionConfig reducedMotion="user" transition={spring.default}>
+        <TooltipProvider delayDuration={300}>
+          <ConfettiProvider>{children}</ConfettiProvider>
+          <Toaster />
+        </TooltipProvider>
+      </MotionConfig>
+    </ConvexAuthProvider>
+  );
+}

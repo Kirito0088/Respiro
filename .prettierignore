@@ -1,0 +1,12 @@
+node_modules
+.next
+convex/_generated
+.agents
+package-lock.json
+.claude
+.convex
+.playwright-mcp
+skills-lock.json
+coverage
+test-results
+playwright-report
