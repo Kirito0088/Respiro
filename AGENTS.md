@@ -57,7 +57,16 @@ npm run check    # Runs: typecheck + lint + format:check + test
 npm run build    # Confirms static generation and build integrity
 ```
 
-## 4. Issue Tracking & Workflow
+## 4. Agent skills
 
-- **Issues:** Tracked via GitHub Issues (`gh issue`). See [`docs/agents/issue-tracker.md`](docs/agents/issue-tracker.md).
-- **Triage Labels:** `needs-triage`, `needs-info`, `ready-for-agent`, `ready-for-human`, `wontfix`. See [`docs/agents/triage-labels.md`](docs/agents/triage-labels.md).
+### Issue tracker
+
+Issues and specs live in GitHub Issues. See `docs/agents/issue-tracker.md`.
+
+### Triage labels
+
+Default triage labels: `needs-triage`, `needs-info`, `ready-for-agent`, `ready-for-human`, `wontfix`. See `docs/agents/triage-labels.md`.
+
+### Domain docs
+
+Single-context (`CONTEXT.md` + `docs/adr/`). See `docs/agents/domain.md`.
